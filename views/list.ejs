@@ -10,35 +10,46 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1>
-            <%= kindDay %>
-        </h1>
+    <div class="main-container">
+
+        <div class="title">
+            <h1>to do list</h1>
+        </div>
+
+        <div class="container">
+            <h1>
+                <%= kindDay %>
+            </h1>
+        </div>
+
+        <div class="foot">
+            <form action="/" method="post">
+                <input type="text" name="text" placeholder="add item" autofocus required>
+                <button type="submit">add</button>
+            </form>
+        </div>
+
+        <div class="container-2">
+
+            <% newListItems.forEach(function(item){ %>
+                <form action="/delete" method="post">
+                    <div class="item">
+                        <input type="checkbox" name="checkbox" value="<%= item._id%>" onchange="this.form.submit()">
+                        <p>
+                            <%= item.name %>
+                        </p>
+                    </div>
+                    <% }) %>
+                </form>
+        </div>
     </div>
 
-    <div class="container-2">
-        <% for (var i=0; i<newListItems.length; i++) { %>
 
-            <div class="item">
-                <input type="checkbox">
-                <p>
-                    <%= newListItems[i] %>
-                </p>
-
-            </div>
-            <% } %>
-    </div>
-
-    <div class="foot">
-        <form action="/" method="post">
-            <input type="text" name="text" placeholder="add item" autofocus required>
-            <button type="submit">add</button>
-        </form>
-    </div>
 
 
 </body>
 <footer>
-    copyright 2023  @dharmaseervi
+    copyright 2023 @dharmaseervi
 </footer>
+
 </html>

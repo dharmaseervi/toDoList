@@ -74,6 +74,12 @@ app.post("/delete", function (req, res) {
     });
 });
 
-app.listen(3000, function () {
-    console.log("local host 3000 is ready");
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
+app.listen(port);
+
+app.listen(port, function () {
+    console.log("server is ready");
 });
